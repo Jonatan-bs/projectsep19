@@ -1,0 +1,17 @@
+.flex-container {
+    display: flex;
+}
+
+.dice {
+    width: 100px;
+    height: 100px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #fff;
+    text-align: center;
+    box-sizing: border-box;
+    cursor:pointer;
+}
+.dice.active {
+    background: blue;
+}
