@@ -15,3 +15,11 @@
 .dice.active {
     background: blue;
 }
+#playbutton {
+    padding: 20px;
+    display: block;
+    background: green;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+}

@@ -4,21 +4,44 @@
 
 
 /// Define varriables
-let scoreBoard = [];
 let Dthrow = [2, 1, 1, 1, 1, 1];
 let turnNr = 0;
 let dicesToHold = []; // Dices to stick with
+let dicesToHold2;
+let last = false;
 let canHold = false; // whether player can pick dice to hold
 let diceDivs;
+let elmNr;
+let scoreBoard = [{
+  ones: "",
+  twos: "",
+  threes: "",
+  fours: "",
+  fives: "",
+  sixes: "",
+  onePair: "",
+  twoPair: "",
+  threeOfKind: "",
+  fourOfKind: "",
+  sStraight: "",
+  bStraight: "",
+  fullHouse: "",
+  chance: "",
+  yatzy: ""
+}];
 
 /// ON PAGE LOAD
 function init() {
   diceDivs = document.getElementsByClassName('dice');
+  playButton = document.getElementById('playbutton');
 
-  ///Assign addEventListeners
+  ///Assign addEventListeners to diceDivs
   for (i = 0; i < diceDivs.length; i++) {
     diceDivs[i].addEventListener('click', holdDices)
   }
+
+  ///Assign addEventListeners to play button
+  playButton.addEventListener('click', play)
 }
 window.addEventListener('load', init)
 
@@ -39,15 +62,20 @@ function fillDivs() {
 
 /// Roll 5 dice
 
-function rollDice(dicesToHold) { /// dicesToHold array with numbers from 0-5
-  if (dicesToHold == undefined) {
-    let dicesToHold = []
-  };
+function rollDice() { /// dicesToHold array with numbers from 0-5
+/*  if (dicesToHold == undefined) {
+    dicesToHold = []
+  };*/
   for (let i = 0; i < 6; i++) {
     if (!dicesToHold.includes(i)) { /// check if dice is picked to stick with
       let randDiceNr = Math.floor(Math.random() * 6 + 1);
       Dthrow[i] = randDiceNr
     }
+  }
+
+  if(last===true){
+    last=false;
+    dicesToHold = [];
   }
   fillDivs()
   return Dthrow = Dthrow;
@@ -56,7 +84,7 @@ function rollDice(dicesToHold) { /// dicesToHold array with numbers from 0-5
 
 /// Play 3 turns
 
-function playTurn(dicesToHold) {
+function playTurn() {
   if (turnNr < 2) { /// if not last throw of turn, make throw
     turnNr++
     canHold = true;
@@ -65,40 +93,44 @@ function playTurn(dicesToHold) {
     removeClassActive()
     turnNr = 0;
     canHold = false;
-    console.log('ikk flere skud')
+    last = true;
     return rollDice(dicesToHold)
   }
 
 }
 
-///////////
+
 /// Chose dice to stick with
 function holdDices(elm) {
   elm = elm.target;
   if (canHold == true) { //if last turn played canhold is not true
     if (elm.classList.contains('active')) {
-      elm.classList.remove('active')
-      console.log(elm)
+      elm.classList.remove('active');
+      elmNr = Number(elm.getAttribute('id').replace('d', "")) - 1;
+      dicesToHold.pop(elmNr);
     } else {
-      elm.classList.add('active')
-      console.log(elm)
+      elm.classList.add('active');
+      elmNr = Number(elm.getAttribute('id').replace('d', "")) - 1;
+      dicesToHold.push(elmNr);
     }
   }
 }
 
 
 /// Remove class active on dices
-function removeClassActive(){
-for (i = 0; i < diceDivs.length; i++) {
-if (diceDivs[i].classList.contains('active')) {
-  diceDivs[i].classList.remove('active')
-}
-}
+function removeClassActive() {
+  for (let i = 0; i < diceDivs.length; i++) {
+    if (diceDivs[i].classList.contains('active')) {
+      diceDivs[i].classList.remove('active')
+    }
+  }
 }
 
 
 /// Play one turn
-// console.log(playTurn(dicesToHold))
+function play() {
+  playTurn(dicesToHold)
+}
 
 
 /// Show posibbilities in scoreBoard
