@@ -22,3 +22,20 @@
     color: #fff;
     cursor: pointer;
 }
+#playbutton.disabled {
+    padding: 20px;
+    display: block;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+}
+tr:not(:first-child) > th:not(:first-child){
+  cursor: pointer;
+}
+tr:not(:first-child) > th:not(:first-child):hover{
+  background:#e3e3e3
+}
+th.picked{
+  background: blue;
+  color: #fff;
+}

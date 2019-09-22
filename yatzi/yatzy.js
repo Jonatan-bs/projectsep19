@@ -46,9 +46,6 @@ function fillDivs() {
 /// Roll 5 dice
 
 function rollDice() { /// dicesToHold array with numbers from 0-5
-/*  if (dicesToHold == undefined) {
-    dicesToHold = []
-  };*/
   for (let i = 0; i < 5; i++) {
     if (!dicesToHold.includes(i)) { /// check if dice is picked to stick with
       let randDiceNr = Math.floor(Math.random() * 6 + 1);
@@ -56,9 +53,11 @@ function rollDice() { /// dicesToHold array with numbers from 0-5
     }
   }
 
-  if(last===true){
-    last=false;
+  if (last === true) {
+    last = false;
     dicesToHold = [];
+    playButton.removeEventListener('click', play)
+    playButton.classList.add('disabled')
   }
   fillDivs()
   return Dthrow = Dthrow;
@@ -74,7 +73,7 @@ function playTurn() {
     return rollDice(dicesToHold)
   } else { // Sidste skud
     removeClassActive()
-    turnNr = 0;
+    //turnNr = 0;
     canHold = false;
     last = true;
     return rollDice(dicesToHold)
@@ -86,6 +85,10 @@ function playTurn() {
 /// Chose dice to stick with
 function holdDices(elm) {
   elm = elm.target;
+  if(elm.tagName==='P'){
+    elm = elm.parentNode;
+  };
+
   if (canHold == true) { //if last turn played canhold is not true
     if (elm.classList.contains('active')) {
       elm.classList.remove('active');
@@ -113,6 +116,9 @@ function removeClassActive() {
 /// Play one turn
 function play() {
   playTurn(dicesToHold)
+  DthrowCounter();
+  pointFiller();
+  fillDom() ;
 }
 
 
