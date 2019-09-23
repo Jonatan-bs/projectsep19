@@ -196,8 +196,8 @@ function chooseScore(elm) {
     let playerNr = targetID.substring(1, 2);
     playersScoreboard[Object.keys(playersScoreboard)[scorNr]][1] = true;
     elm.target.classList.add('picked');
-    playButton.addEventListener('click', play)
-    playButton.classList.remove('disabled')
+    playbutton.addEventListener('click', play)
+    playbutton.classList.remove('disabled')
     turnNr = 0;
     Dthrow = []
     DthrowCount = [];
