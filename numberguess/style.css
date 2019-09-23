@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+html body{
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 auto;
+  color: Orange;
+  padding: 10px;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+header.topbar_menu {
+  width: 100%;
+  min-height: 20px;
+  text-align: center;
+  background: black;
+}
+
+
+section.content {
+  width: 100%;
+  text-align: center;
+}
+
+
+div.guesses_made {
+  width: 40%;
+  margin: 0 auto;
+}
+
+div.last_guess {
+  width: 40%;
+  margin: 0 auto;
+}
+
+div.hiOrLow {
+  width: 40%;
+  margin: 0 auto;
+}
