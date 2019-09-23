@@ -1,9 +1,30 @@
+// Add players
+function addPlayer(){
+  // make array of players
+   player = document.getElementById('players');
+   playerArr.push(player.value);
+
+  // Print players in dom
+    li = document.createElement('li');
+    p = document.createElement('p');
+    // p.innerHTML = player;
+    li.appendChild(p);
+    playersLi.appendChild(li);
+
+
+
 // Create player table row
-let players = 1;
 
 function createPlayerTable() {
+  let player = document.getElementById('players');
+      players = players.value;
+  let playersZ = players-1;  //players start with zero
+
+  ///////////////
+
   let table = document.getElementById('ytable')
   let tableTr = table.getElementsByTagName('tr')
+
 
   let th;
 
@@ -33,4 +54,6 @@ players++
 
 
 }
-window.addEventListener('load', createPlayerTable)
+
+
+//window.addEventListener('load', createPlayerTable)

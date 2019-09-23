@@ -3,20 +3,34 @@
 ////////////////////////////
 
 
+
 /// Define varriables
+
 let Dthrow = [];
 let turnNr = 0;
 let dicesToHold = []; // Dices to stick with
 let dicesToHold2;
 let last = false;
 let canHold = false; // whether player can pick dice to hold
-let diceDivs;
+//let diceDivs;
 let elmNr;
+let playerArr = [];
+let playersLi;
+let player;
+let li;
+let p;
+
+
 
 /// ON PAGE LOAD
 function init() {
-  diceDivs = document.getElementsByClassName('dice');
-  playButton = document.getElementById('playbutton');
+  let diceDivs = document.getElementsByClassName('dice');
+  let playButton = document.getElementById('playbutton');
+  let startButton = document.getElementById('startButton');
+  let addPlayerButton = document.getElementById('addPlayer');
+   playersLi = document.getElementById('playerslist');
+
+
 
   ///Assign addEventListeners to diceDivs
   for (i = 0; i < diceDivs.length; i++) {
@@ -25,10 +39,14 @@ function init() {
 
   ///Assign addEventListeners to play button
   playButton.addEventListener('click', play)
+
+  ///Assign addEventListeners to addplayers
+  addPlayerButton.addEventListener('click', addPlayer)
+
+  ///Assign addEventListeners to start button
+  startButton.addEventListener('click', createPlayerTable)
 }
 window.addEventListener('load', init)
-
-/// Create DOM elements
 
 
 
