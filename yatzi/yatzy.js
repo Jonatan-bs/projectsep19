@@ -31,8 +31,37 @@ let playerTurn = 0;
 
 function fillDivs() {
   let diceDivs = document.getElementsByClassName('dice');
+  let img;
+
   for (i = 0; i < diceDivs.length; i++) {
-    diceDivs[i].getElementsByTagName('p')[0].innerHTML = Dthrow[i]
+
+    img = diceDivs[i].getElementsByTagName('img')[0];
+
+    switch (Dthrow[i]) {
+      case 1:
+      img.src = "one.svg"
+      break;
+      case 2:
+      img.src = "two.svg"
+      break;
+      case 3:
+      img.src = "three.svg"
+      break;
+      case 4:
+      img.src = "four.svg"
+      break;
+      case 5:
+      img.src = "five.svg"
+      break;
+      case 6:
+      img.src = "six.svg"
+      break;
+
+      default:
+
+    }
+
+    //diceDivs[i].getElementsByTagName('p')[0].innerHTML = Dthrow[i]
   }
 }
 
@@ -69,8 +98,10 @@ function playTurn() {
     turnNr++
     canHold = true;
     return rollDice(dicesToHold)
+    
+
   } else { // Sidste skud
-    removeClassActive()
+    addClassActive()
     //turnNr = 0;
     canHold = false;
     last = true;
@@ -83,7 +114,7 @@ function playTurn() {
 /// Chose dice to stick with
 function holdDices(elm) {
   elm = elm.target;
-  if(elm.tagName==='P'){
+  if (elm.tagName === 'IMG') {
     elm = elm.parentNode;
   };
 
@@ -111,6 +142,13 @@ function removeClassActive() {
     }
   }
 }
+/// add class active on dices
+function addClassActive() {
+  let diceDivs = document.getElementsByClassName('dice');
+  for (let i = 0; i < diceDivs.length; i++) {
+      diceDivs[i].classList.add('active')
+  }
+}
 
 
 /// Play one turn
@@ -118,5 +156,5 @@ function play() {
   playTurn(dicesToHold)
   DthrowCounter();
   pointFiller();
-  fillDom() ;
+  fillDom();
 }

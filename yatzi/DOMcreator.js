@@ -9,18 +9,25 @@ function init() {
   input.type= "text";
   let addPlayerButton = document.createElement('div');
   addPlayerButton.id ="addPlayer";
+    addPlayerButton.className ="btn";
   addPlayerButton.innerHTML = "Add Player";
   let startButton = document.createElement('div');
   startButton.id ="startButton";
   startButton.innerHTML = "Start Game";
+  startButton.className ="btn disabled";
+
   let ul = document.createElement('ul');
   ul.id ="playerslist";
+  let divCont = document.createElement('div');
+  divCont.className= "playersCont";
 
-  document.getElementById('target').append(input)
-  document.getElementById('target').append(addPlayerButton)
-  document.getElementById('target').append(startButton)
+
+  divCont.appendChild(input)
+  divCont.appendChild(addPlayerButton)
+  divCont.appendChild(startButton)
+
+  document.getElementById('target').append(divCont)
   document.getElementById('target').append(ul)
-
 
   ///Assign addEventListeners to addplayers
   addPlayerButton.addEventListener('click', addPlayer)
@@ -33,22 +40,36 @@ window.addEventListener('load', init)
 
 // Add players
 function addPlayer() {
+
+
+
   // make array of players
   player = document.getElementById('players');
+  if(playerArr.includes(player.value)){
+    alert('Player already exist')
+  }
+  else if(player.value!==""){
   playerArr.push(player.value);
   // Print players in dom
-  li = document.createElement('li');
-  p = document.createElement('p');
+  let li = document.createElement('li');
+  let p = document.createElement('p');
   p.append(player.value);
+  p.addEventListener('click',removePlayer)
+
   li.appendChild(p);
   let playersLi = document.getElementById('playerslist');
   playersLi.appendChild(li);
+  document.getElementById('startButton').classList.remove('disabled')
+}
+///else input empty
+
 }
 
 
 // Create player table row
 
 function createPlayerTable() {
+  if(playerArr.length>0){
   document.getElementById('target').innerHTML="";
   createScoreboards()
   //create  Dice flex box
@@ -63,9 +84,11 @@ function createPlayerTable() {
     diceDiv = document.createElement('div')
     diceDiv.className = 'dice';
     diceDiv.id = "d" + i;
-    p = document.createElement('p');
-    p.innerHTML = i;
-    diceDiv.appendChild(p)
+    img = document.createElement('img');
+    img.src="one.svg";
+    img.alt="one";
+    //img.innerHTML = i;
+    diceDiv.appendChild(img)
     diceDivCont.appendChild(diceDiv)
     diceDivs.push(diceDiv)
   }
@@ -102,9 +125,7 @@ function createPlayerTable() {
 
   /////////////// create players rows
 
-  //let table = document.getElementById('ytable')
-  //let tableTr = table.getElementsByTagName('tr')
-  //let th;
+
 
 
   for (let i = 0; i < playerArr.length; i++) {
@@ -122,7 +143,7 @@ function createPlayerTable() {
         th = tableTrs[i2].appendChild(th)
       } else { //create score boxes
 
-        th.addEventListener('click', chooseScore)
+        if(i===0){th.addEventListener('click', chooseScore)}
         th.setAttribute('id', 'p' + i + 's' + i2)
         th = tableTrs[i2].appendChild(th)
 
@@ -143,11 +164,20 @@ function createPlayerTable() {
   ///Assign addEventListeners to play button
   playbutton.addEventListener('click', play)
 
-
+}
 };
 
 
+//Remove player
+function removePlayer(elm){
+  let playerName = elm.target.innerHTML;
+  playerArr.pop(playerName)
+  elm.target.parentNode.removeChild(elm.target);
 
+  if(playerArr.length==0){
+  document.getElementById('startButton').classList.add('disabled')
+}
+}
 
 
 

@@ -26,7 +26,6 @@ function createScoreboards(){
 
   for(let i=0; i<playerArr.length ; i++){
     scoreboardEmptyDeepCopy = JSON.parse(JSON.stringify(scoreboardEmpty));
-  //  console.log(scoreboardEmptyDeepCopy)
     scoreboard.push(scoreboardEmptyDeepCopy)
   }
 }
@@ -188,6 +187,8 @@ function chooseScore(elm) {
 //
   let playersScoreboard = scoreboard[playerTurn];
   if (turnNr !== 0) {
+
+
     removeClassActive()
     dicesToHold = [];
     elm.target.removeEventListener('click', chooseScore)
@@ -203,11 +204,24 @@ function chooseScore(elm) {
     DthrowCount = [];
     resetNotPickedScores(playerNr)
     fillDom();
+    //removeEventListeners
+    let th;
+    for(let i=1; i<=15;i++){
+    th = document.getElementById('p'+playerTurn +"s" +i)
+    th.removeEventListener('click', chooseScore)
+    }
+
+
     //next players turn
     if(playerTurn<playerArr.length-1){
     playerTurn++
   } else {
     playerTurn=0;
   }
+  //addEventListeners
+  for(let i=1; i<=15;i++){
+  th = document.getElementById('p'+ playerTurn +"s" +i)
+  th.addEventListener('click', chooseScore)
   }
+}
 }
