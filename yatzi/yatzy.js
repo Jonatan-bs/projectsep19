@@ -3,40 +3,65 @@
 ////////////////////////////
 
 
+
 /// Define varriables
+
 let Dthrow = [];
 let turnNr = 0;
 let dicesToHold = []; // Dices to stick with
 let dicesToHold2;
 let last = false;
 let canHold = false; // whether player can pick dice to hold
-let diceDivs;
+//let diceDivs;
 let elmNr;
+let playerArr = [];
+let playersLi;
+let player;
+let li;
+let p;
+let playerTurn = 0;
+//let playbutton;
 
-/// ON PAGE LOAD
-function init() {
-  diceDivs = document.getElementsByClassName('dice');
-  playButton = document.getElementById('playbutton');
 
-  ///Assign addEventListeners to diceDivs
-  for (i = 0; i < diceDivs.length; i++) {
-    diceDivs[i].addEventListener('click', holdDices)
-  }
 
-  ///Assign addEventListeners to play button
-  playButton.addEventListener('click', play)
-}
-window.addEventListener('load', init)
-
-/// Create DOM elements
 
 
 
 /// Fill DOM dices
 
 function fillDivs() {
+  let diceDivs = document.getElementsByClassName('dice');
+  let img;
+
   for (i = 0; i < diceDivs.length; i++) {
-    diceDivs[i].getElementsByTagName('p')[0].innerHTML = Dthrow[i]
+
+    img = diceDivs[i].getElementsByTagName('img')[0];
+
+    switch (Dthrow[i]) {
+      case 1:
+      img.src = "one.svg"
+      break;
+      case 2:
+      img.src = "two.svg"
+      break;
+      case 3:
+      img.src = "three.svg"
+      break;
+      case 4:
+      img.src = "four.svg"
+      break;
+      case 5:
+      img.src = "five.svg"
+      break;
+      case 6:
+      img.src = "six.svg"
+      break;
+
+      default:
+
+    }
+
+    //diceDivs[i].getElementsByTagName('p')[0].innerHTML = Dthrow[i]
   }
 }
 
@@ -46,6 +71,8 @@ function fillDivs() {
 /// Roll 5 dice
 
 function rollDice() { /// dicesToHold array with numbers from 0-5
+
+
   for (let i = 0; i < 5; i++) {
     if (!dicesToHold.includes(i)) { /// check if dice is picked to stick with
       let randDiceNr = Math.floor(Math.random() * 6 + 1);
@@ -56,8 +83,8 @@ function rollDice() { /// dicesToHold array with numbers from 0-5
   if (last === true) {
     last = false;
     dicesToHold = [];
-    playButton.removeEventListener('click', play)
-    playButton.classList.add('disabled')
+    playbutton.removeEventListener('click', play)
+    playbutton.classList.add('disabled')
   }
   fillDivs()
   return Dthrow = Dthrow;
@@ -71,8 +98,10 @@ function playTurn() {
     turnNr++
     canHold = true;
     return rollDice(dicesToHold)
+
+
   } else { // Sidste skud
-    removeClassActive()
+    addClassActive()
     //turnNr = 0;
     canHold = false;
     last = true;
@@ -85,7 +114,7 @@ function playTurn() {
 /// Chose dice to stick with
 function holdDices(elm) {
   elm = elm.target;
-  if(elm.tagName==='P'){
+  if (elm.tagName === 'IMG') {
     elm = elm.parentNode;
   };
 
@@ -100,15 +129,24 @@ function holdDices(elm) {
       dicesToHold.push(elmNr);
     }
   }
+
 }
 
 
 /// Remove class active on dices
 function removeClassActive() {
+  let diceDivs = document.getElementsByClassName('dice');
   for (let i = 0; i < diceDivs.length; i++) {
     if (diceDivs[i].classList.contains('active')) {
       diceDivs[i].classList.remove('active')
     }
+  }
+}
+/// add class active on dices
+function addClassActive() {
+  let diceDivs = document.getElementsByClassName('dice');
+  for (let i = 0; i < diceDivs.length; i++) {
+      diceDivs[i].classList.add('active')
   }
 }
 
@@ -118,11 +156,13 @@ function play() {
   playTurn(dicesToHold)
   DthrowCounter();
   pointFiller();
-  fillDom() ;
+  fillDom();
 }
 
-
-/// Show posibbilities in scoreBoard
-
-
-/// Choose and assig score
+//play turn on spacebar click
+document.onkeyup = function(e){
+  let startbtn = document.getElementById('startButton');
+    if(e.keyCode == 32 && startbtn==null ){
+        play()
+    }
+}

@@ -1,19 +1,24 @@
+body {
+    background: #232323;
+    color: #fff;
+}
+
 .flex-container {
     display: flex;
+    justify-content: center;
+
 }
 
 .dice {
-    width: 100px;
-    height: 100px;
-    background: #333;
+    width: 100%;
+    max-width: 180px;
     color: #fff;
-    border: 1px solid #fff;
     text-align: center;
     box-sizing: border-box;
     cursor:pointer;
 }
 .dice.active {
-    background: blue;
+    background: green;
 }
 #playbutton {
     padding: 20px;
@@ -38,4 +43,71 @@ tr:not(:first-child) > th:not(:first-child):hover{
 th.picked{
   background: blue;
   color: #fff;
+}
+#players {
+    position: absolute;
+    width: 100%;
+    font-size: 31px;
+    border-radius: 45px;
+    height: 45px;
+    line-height: 0;
+    padding: 0 0 0 120px;
+    margin: 0px;
+    border: 0px;
+    z-index: 1;
+}
+.playersCont {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 410px;
+    overflow: hidden;
+    height: 100px;
+}
+div#addPlayer.btn {
+    position: absolute;
+    height: 45px;
+    background: green;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    padding-top: 12px;
+    width: 100px;
+    text-align: center;
+    border-radius: 40px 0px 0 40px;
+    cursor: pointer;
+    z-index: 2;
+}
+div#startButton.btn {
+    height: 45px;
+    background: green;
+    box-sizing: border-box;
+    padding-top: 12px;
+    margin: 55px auto;
+    margin-bottom: 0;
+    width: 100px;
+    text-align: center;
+    z-index: 2;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+div#startButton.btn.disabled {
+    background: #333;
+    color: #fff;
+}
+
+ul#playerslist {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    font-size: 30px;
+}
+#highscore{
+  background: red;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
