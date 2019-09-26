@@ -60,6 +60,7 @@ function pointFiller() {
       //Fill points for ones, twos ...
       playersScoreboard[Object.keys(playersScoreboard)[i]][0] = (i + 1) * DthrowCount[i];
     };
+
     //one pair
     if (DthrowCount[i] > 1) {
       console.log("tal" + i + "antal" + DthrowCount[i])

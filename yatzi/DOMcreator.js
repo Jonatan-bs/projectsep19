@@ -134,13 +134,13 @@ function createPlayerTable() {
   //create play button
   let playbutton = document.createElement('div')
   playbutton.id = 'playbutton';
-  playbutton.innerHTML = 'play';
+  playbutton.innerHTML = 'Roll';
 
 
 
   /////////// Create table
 
-  let scoreboardNames = ['', 'ones', 'twos', 'threes', 'fours', 'fives', 'sixes', 'onePair', 'twoPairs', 'threeOfKind', 'fourOfKind', 'sStraight', 'bStraight', 'fullHouse', 'chance', 'yatzy','score']
+  let scoreboardNames = ['', 'ones', 'twos', 'threes', 'fours', 'fives', 'sixes', 'one Pair', 'two Pairs', 'three of a kind', 'four of a kind', 'small straight', 'large straight', 'fullhouse', 'chance', 'yatzy','score']
 
   let table= document.createElement('table')
   table.id = "ytable";
