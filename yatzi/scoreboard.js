@@ -47,6 +47,7 @@ function DthrowCounter() {
 ///fill points in scoreboard
 
 function pointFiller() {
+  resetNotPickedScores(playerTurn)
   let pairs = 0;
   let pairSum = 0;
   let threeOfKind = 0;
@@ -63,16 +64,18 @@ function pointFiller() {
 
     //one pair
     if (DthrowCount[i] > 1) {
-      console.log("tal" + i + "antal" + DthrowCount[i])
+
+      //let testI = i+1;
+      //console.log("tal:" + testI + " antal:" + DthrowCount[i])
       if (playersScoreboard.onePair[1] == false) {
         playersScoreboard.onePair[0] = (i + 1) * 2;
       }
       pairs++
       pairSum = pairSum + (i + 1) * 2
+      //console.log("antal par:" + pairs)
     }
     //two pairs
     if (pairs === 2 && playersScoreboard.twoPairs[1] == false) {
-      console.log(pairs)
       playersScoreboard.twoPairs[0] = pairSum;
     }
 
@@ -144,7 +147,11 @@ function fillDom() {
     scorName = Object.keys(playersScoreboard)[i];
     scorArr = playersScoreboard[scorName];
     scorVal = scorArr[0];
-
+    /*
+    console.log(scorName);
+    console.log(scorArr);
+    console.log(scorVal);
+*/
     let table = document.getElementById('ytable')
     let tableTr = table.getElementsByTagName('tr')
     let th;
