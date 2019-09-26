@@ -43,7 +43,7 @@ function DthrowCounter() {
     DthrowCount[Dthrow[i] - 1]++
   }
 
-  
+
 }
 
 ///fill points in scoreboard
@@ -261,25 +261,30 @@ function chooseScore(elm) {
     playerAtt.name = playerArr[i];
     playerAtt.score = fullscore;
     playersAtt.push(playerAtt)
+
+
+
+
     if (i == scoreboard.length - 1 && playerTurn == 0) {
       for (let i = 0; i < playersAtt.length; i++) {
         let thisPlayersAtt = playersAtt[i];
-
+        console.log(thisPlayersAtt)
         ///Check if user has higer score
         //for (let i = 0; i < Object.keys(cookiesObj).length; i++) {
         //  let thisCookieName = Object.keys(cookiesObj)[i];
-        if (Object.keys(cookiesObj).includes(thisPlayersAtt.name)) {
-          console.log(cookiesObj[thisPlayersAtt.name])
+
+        if (Object.keys(cookiesObj).includes("yatzy" + thisPlayersAtt.name)) {
+          let thisname = "yatzy" + thisPlayersAtt.name;
           console.log(thisPlayersAtt.score)
-          if (thisPlayersAtt.score > cookiesObj[thisPlayersAtt.name]) {
-            //console.log('score is higher')
-            createCookie(thisPlayersAtt.name, thisPlayersAtt.score, 2000)
+          if (thisPlayersAtt.score > cookiesObj[thisname]) {
+            console.log('score is higher')
+            createCookie("yatzy" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
           } else {
-            //console.log('score is lower')
+            console.log('score is lower')
           }
 
         } else {
-          createCookie(thisPlayersAtt.name, thisPlayersAtt.score, 2000)
+          createCookie("yatzy" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
         }
       }
     }

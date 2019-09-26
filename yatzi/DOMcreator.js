@@ -12,9 +12,19 @@ div.id = "highscore";
 
 //show cookies
 for(i=0; i<Object.keys(cookiesObj).length; i++){
+
   let keys = Object.keys(cookiesObj)[i];
-  let scores = keys + " " + cookiesObj[keys] + "; ";
-  cookiesStr = cookiesStr + scores
+  //console.log(keys);
+  if (keys.includes('yatzy')) {
+    let score = cookiesObj[keys];
+    keys = keys.slice(5)
+
+
+    let scores = keys + " " + score + "; ";
+    cookiesStr = cookiesStr + scores
+  }
+
+
 }
 console.log(cookiesStr);
 div.innerHTML = cookiesStr;
