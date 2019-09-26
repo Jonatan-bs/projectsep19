@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
 body {
-    background: #232323;
+    background: #000;
     color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin: 0;
 }
 
 .flex-container {
@@ -16,16 +20,22 @@ body {
     text-align: center;
     box-sizing: border-box;
     cursor:pointer;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 .dice.active {
-    background: green;
+    background: #5db583;
 }
 #playbutton {
     padding: 20px;
     display: block;
-    background: green;
+    background: #5db583;
     color: #fff;
     cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 #playbutton.disabled {
     padding: 20px;
@@ -36,25 +46,35 @@ body {
 }
 tr:not(:first-child) > th:not(:first-child){
   cursor: pointer;
+  border: 1px solid #fff;
+  width: 75px;
+
 }
 tr:not(:first-child) > th:not(:first-child):hover{
-  background:#e3e3e3
+  background:#e3e3e3;
 }
 th.picked{
-  background: blue;
+  background: #549ec3;
   color: #fff;
 }
+
+th:first-child{
+  margin-left: 10px;
+  background: #5db583;
+}
+
 #players {
     position: absolute;
     width: 100%;
     font-size: 31px;
-    border-radius: 45px;
+    border-radius: 5px;
     height: 45px;
     line-height: 0;
     padding: 0 0 0 120px;
     margin: 0px;
     border: 0px;
     z-index: 1;
+    top: 10px;
 }
 .playersCont {
     position: relative;
@@ -67,20 +87,22 @@ th.picked{
 div#addPlayer.btn {
     position: absolute;
     height: 45px;
-    background: green;
+    background: #5db583;
     left: 0;
     top: 0;
     box-sizing: border-box;
     padding-top: 12px;
     width: 100px;
     text-align: center;
-    border-radius: 40px 0px 0 40px;
+    border-radius: 5px 0px 0 5px;
     cursor: pointer;
     z-index: 2;
+    text-transform: uppercase;
+    top: 10
 }
 div#startButton.btn {
     height: 45px;
-    background: green;
+    background: #5db583;
     box-sizing: border-box;
     padding-top: 12px;
     margin: 55px auto;
@@ -88,13 +110,14 @@ div#startButton.btn {
     width: 100px;
     text-align: center;
     z-index: 2;
-    border-radius: 40px;
+    border-radius: 5px;
     cursor: pointer;
+    text-transform: uppercase;
+    display: block;
 }
 
 div#startButton.btn.disabled {
-    background: #333;
-    color: #fff;
+    display: none;
 }
 
 ul#playerslist {
@@ -110,4 +133,15 @@ ul#playerslist {
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 75px;
+  color: #fff;
+  font-family: 'Concert One', cursive;
+  letter-spacing: 15px;
+  background: #5db583;
+  text-align: center;
+  padding:50px;
 }

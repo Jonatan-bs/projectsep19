@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+
+body {
+  background: #000;
+  margin: 0;
+}
+
+.top {
+  padding-top: 75px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  width: 1500px;
+  justify-content: space-between;
+}
+
+.background {
+  background: #eee;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  height: 300px
+}
+
+img {
+  width: 450px;
+  border: 7px solid #000;
+  border-radius: 5px;
+  transition: 1s;
+}
+
+img:hover {
+  transition: 1s;
+  width: 500px;
+}
+
+h1 {
+  text-align: center;
+  color: #e45453;
+  text-transform: uppercase;
+  font-family: 'Concert One', cursive;
+  font-size: 90px;
+}
