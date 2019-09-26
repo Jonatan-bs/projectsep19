@@ -62,6 +62,7 @@ function pointFiller() {
     };
     //one pair
     if (DthrowCount[i] > 1) {
+      console.log("tal" + i + "antal" + DthrowCount[i])
       if (playersScoreboard.onePair[1] == false) {
         playersScoreboard.onePair[0] = (i + 1) * 2;
       }
@@ -70,6 +71,7 @@ function pointFiller() {
     }
     //two pairs
     if (pairs === 2 && playersScoreboard.twoPairs[1] == false) {
+      console.log(pairs)
       playersScoreboard.twoPairs[0] = pairSum;
     }
 

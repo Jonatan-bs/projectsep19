@@ -25,9 +25,18 @@ window.addEventListener('load',function(){document.getElementById('target').appe
 var cookiesObj = [];
 }
 
+
+
+
+
 /// ON PAGE LOAD
 function init() {
+  //TITLE
+  title = document.createElement('div');
+  title.className = "title";
+  title.innerHTML = "Yatzy"
 
+  document.getElementById('target').appendChild(title)
 
 
 
@@ -56,6 +65,10 @@ function init() {
   divCont.appendChild(input)
   divCont.appendChild(addPlayerButton)
   divCont.appendChild(startButton)
+
+
+
+
 
   document.getElementById('target').append(divCont)
   document.getElementById('target').append(ul)
