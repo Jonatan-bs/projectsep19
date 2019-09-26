@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  background: #546aa8;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 75px;
+  color: #fff;
+  margin-top: 50px;
+  font-family: 'Concert One', cursive;
+  letter-spacing: 15px;
+}
+
+#buttons {
+  background: #000;
+}
+
+#alphabet {
+  list-style-type:none;
+  display: flex;
+  padding: 50px;
+  width: 500px;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#letter {
+  width: 45px;
+  height: 45px;
+  font-size: 16px;
+  background: #546aa8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+
+#letter:hover {
+  cursor: pointer;
+  background: #215d8e;
+}
+
+#letter.active {
+  background: #294e78;
+}
+
+#my-word {
+  list-style-type:none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background: #000;
+  padding: 50px;
+}
+
+.guess {
+  width: 30px;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #546aa8;
+}
+
+#hold {
+  margin-top: 50px;
+}
+
+#myattempts {
+  font-size: 30px;
+  color: #fff;
+}
+
+#reset {
+  background: #000;
+  color: #fff;
+  border: transparent;
+  text-transform: uppercase;
+  padding: 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 25px;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+#reset:hover {
+  cursor: pointer;
+  background: #333;
+}
+
+.word {
+  text-transform: uppercase;
+}
