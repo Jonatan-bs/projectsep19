@@ -6,8 +6,8 @@ cookiesObj = cookieObj(cookiesObj);
 
 let cookiesStr="";
 //create highscore div
-var divScore = document.createElement('div')
-divScore.id = "highscore";
+let div = document.createElement('div')
+div.id = "highscore";
 
 
 //show cookies
@@ -17,8 +17,8 @@ for(i=0; i<Object.keys(cookiesObj).length; i++){
   cookiesStr = cookiesStr + scores
 }
 console.log(cookiesStr);
-divScore.html = cookiesStr;
-
+div.innerHTML = cookiesStr;
+window.addEventListener('load',function(){document.getElementById('target').appendChild(div)})
 
 
 } else{
@@ -59,7 +59,6 @@ function init() {
 
   document.getElementById('target').append(divCont)
   document.getElementById('target').append(ul)
-  document.getElementById('target').appendChild(divScore);
 
   ///Assign addEventListeners to addplayers
   addPlayerButton.addEventListener('click', addPlayer)
