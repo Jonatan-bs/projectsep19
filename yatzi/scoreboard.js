@@ -1,32 +1,32 @@
 //Scoreboard tester  DthrowCounter(); pointFiller();  fillDom() ; scoreboard;
 
 let DthrowCount = []; // count instances of ones,twos...
-let scoreboard=[];
+let scoreboard = [];
 let scoreboardEmptyCopy;
 
-function createScoreboards(){
+function createScoreboards() {
   scoreboardEmpty = {
-   ones: [0, false], // 0=points ; turns true if score is filled in
-   twos: [0, false],
-   threes: [0, false],
-   fours: [0, false],
-   fives: [0, false],
-   sixes: [0, false],
-   onePair: [0, false],
-   twoPairs: [0, false],
-   threeOfKind: [0, false],
-   fourOfKind: [0, false],
-   sStraight: [0, false],
-   bStraight: [0, false],
-   fullHouse: [0, false],
-   chance: [0, false],
-   yatzy: [0, false],
- };
+    ones: [0, false], // 0=points ; turns true if score is filled in
+    twos: [0, false],
+    threes: [0, false],
+    fours: [0, false],
+    fives: [0, false],
+    sixes: [0, false],
+    onePair: [0, false],
+    twoPairs: [0, false],
+    threeOfKind: [0, false],
+    fourOfKind: [0, false],
+    sStraight: [0, false],
+    bStraight: [0, false],
+    fullHouse: [0, false],
+    chance: [0, false],
+    yatzy: [0, false],
+  };
 
 
-  for(let i=0; i<playerArr.length ; i++){
+  for (let i = 0; i < playerArr.length; i++) {
     scoreboardEmptyDeepCopy = JSON.parse(JSON.stringify(scoreboardEmpty));
-    scoreboard.push(scoreboardEmptyDeepCopy)
+    scoreboard.push(scoreboardEmptyDeepCopy);
   }
 }
 
@@ -146,7 +146,7 @@ function fillDom() {
     let tableTr = table.getElementsByTagName('tr')
     let th;
 
-    th = tableTr[i + 1].getElementsByTagName('th')[playerTurn+1]
+    th = tableTr[i + 1].getElementsByTagName('th')[playerTurn + 1]
     if (scorVal == 0) {
       th.innerHTML = "";
     } else {
@@ -184,7 +184,7 @@ function resetNotPickedScores(playerTurn) {
 // choose score
 function chooseScore(elm) {
 
-//
+  //
   let playersScoreboard = scoreboard[playerTurn];
   if (turnNr !== 0) {
 
@@ -206,22 +206,73 @@ function chooseScore(elm) {
     fillDom();
     //removeEventListeners
     let th;
-    for(let i=1; i<=15;i++){
-    th = document.getElementById('p'+playerTurn +"s" +i)
-    th.removeEventListener('click', chooseScore)
+    for (let i = 1; i <= 15; i++) {
+      th = document.getElementById('p' + playerTurn + "s" + i)
+      th.removeEventListener('click', chooseScore)
     }
 
 
     //next players turn
-    if(playerTurn<playerArr.length-1){
-    playerTurn++
-  } else {
-    playerTurn=0;
+    if (playerTurn < playerArr.length - 1) {
+      playerTurn++
+    } else {
+      playerTurn = 0;
+    }
+    //addEventListeners
+    for (let i = 1; i <= 15; i++) {
+      th = document.getElementById('p' + playerTurn + "s" + i)
+      th.addEventListener('click', chooseScore)
+    }
   }
-  //addEventListeners
-  for(let i=1; i<=15;i++){
-  th = document.getElementById('p'+ playerTurn +"s" +i)
-  th.addEventListener('click', chooseScore)
+  //Save cookie if all scores are filled
+  //let thisScoreboard;
+  //let keyNames;
+  let playersAtt = [];
+  for (let i = 0; i < scoreboard.length; i++) {
+    let fullscore = 0;
+    thisScoreboard = scoreboard[i];
+    keyNames = Object.keys(thisScoreboard);
+    let thisPlayer = i;
+
+    //let allPicked;
+    for (let i = 0; i < keyNames.length; i++) {
+      keyName = keyNames[i];
+      if (thisScoreboard[keyName][1] == false) {
+        return
+      }
+      fullscore = fullscore + thisScoreboard[keyName][0]
+    }
+
+    //Calculate Score
+
+    let playerAtt = {}
+    playerAtt.name = playerArr[i];
+    playerAtt.score = fullscore;
+    playersAtt.push(playerAtt)
+    if (i == scoreboard.length - 1 && playerTurn == 0) {
+      for (let i = 0; i < playersAtt.length; i++) {
+        let thisPlayersAtt = playersAtt[i];
+
+        ///Check if user has higer score
+        //for (let i = 0; i < Object.keys(cookiesObj).length; i++) {
+        //  let thisCookieName = Object.keys(cookiesObj)[i];
+        if (Object.keys(cookiesObj).includes(thisPlayersAtt.name)) {
+          console.log(cookiesObj[thisPlayersAtt.name])
+          console.log(thisPlayersAtt.score)
+          if (thisPlayersAtt.score > cookiesObj[thisPlayersAtt.name]) {
+            //console.log('score is higher')
+            createCookie(thisPlayersAtt.name, thisPlayersAtt.score, 2000)
+          } else {
+            //console.log('score is lower')
+          }
+
+        } else {
+          createCookie(thisPlayersAtt.name, thisPlayersAtt.score, 2000)
+        }
+      }
+    }
   }
-}
+  //save cookie as OBJ
+  cookiesObj = document.cookie;
+  cookiesObj = cookieObj(cookiesObj)
 }

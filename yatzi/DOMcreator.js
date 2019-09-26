@@ -1,5 +1,36 @@
+//Cookies load
+
+if (document.cookie!==""){
+var cookiesObj = document.cookie;
+cookiesObj = cookieObj(cookiesObj);
+
+let cookiesStr="";
+//create highscore div
+var divScore = document.createElement('div')
+divScore.id = "highscore";
+
+
+//show cookies
+for(i=0; i<Object.keys(cookiesObj).length; i++){
+  let keys = Object.keys(cookiesObj)[i];
+  let scores = keys + " " + cookiesObj[keys] + "; ";
+  cookiesStr = cookiesStr + scores
+}
+console.log(cookiesStr);
+divScore.html = cookiesStr;
+
+
+
+} else{
+var cookiesObj = [];
+}
+
 /// ON PAGE LOAD
 function init() {
+
+
+
+
 
 
 
@@ -28,6 +59,7 @@ function init() {
 
   document.getElementById('target').append(divCont)
   document.getElementById('target').append(ul)
+  document.getElementById('target').appendChild(divScore);
 
   ///Assign addEventListeners to addplayers
   addPlayerButton.addEventListener('click', addPlayer)

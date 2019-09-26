@@ -98,7 +98,7 @@ function playTurn() {
     turnNr++
     canHold = true;
     return rollDice(dicesToHold)
-    
+
 
   } else { // Sidste skud
     addClassActive()
@@ -157,4 +157,12 @@ function play() {
   DthrowCounter();
   pointFiller();
   fillDom();
+}
+
+//play turn on spacebar click
+document.onkeyup = function(e){
+  let startbtn = document.getElementById('startButton');
+    if(e.keyCode == 32 && startbtn==null ){
+        play()
+    }
 }
