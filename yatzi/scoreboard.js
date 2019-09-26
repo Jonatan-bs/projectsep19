@@ -42,6 +42,8 @@ function DthrowCounter() {
   for (let i = 0; i < Dthrow.length; i++) {
     DthrowCount[Dthrow[i] - 1]++
   }
+
+  
 }
 
 ///fill points in scoreboard

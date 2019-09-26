@@ -78,6 +78,7 @@ function rollDice() { /// dicesToHold array with numbers from 0-5
       let randDiceNr = Math.floor(Math.random() * 6 + 1);
       Dthrow[i] = randDiceNr
     }
+
   }
 
   if (last === true) {
@@ -86,9 +87,10 @@ function rollDice() { /// dicesToHold array with numbers from 0-5
     playbutton.removeEventListener('click', play)
     playbutton.classList.add('disabled')
   }
+  //Dthrow = [1,1,1,1,1]
   fillDivs()
-  return Dthrow = Dthrow;
 
+  return Dthrow = Dthrow;
 }
 
 /// Play 3 turns
