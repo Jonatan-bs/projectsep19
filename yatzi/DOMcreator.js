@@ -31,12 +31,6 @@ var cookiesObj = [];
 
 /// ON PAGE LOAD
 function init() {
-  //TITLE
-  title = document.createElement('div');
-  title.className = "title";
-  title.innerHTML = "Yatzy"
-
-  document.getElementById('target').appendChild(title)
 
 
 
