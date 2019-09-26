@@ -10,10 +10,11 @@
       <h1>Gæt et nummer!</h1>
     </header>
     <section class="content">
+      <div class="timer"></div>
       <div id="formforguesses">
         <label for="field_for_guess">Skriv dit gæt!</label>
         <input type="text" id="field_for_guess" class="field_for_guess">
-        <input type="submit" value="Guess" class="submitGuess" id="guessSubmit">
+        <input type="submit" value="Guess" class="submitGuess" id="guessSubmit" onclick="startTimer()">
       </div>
       <div class="guesses_made">
       </div>
