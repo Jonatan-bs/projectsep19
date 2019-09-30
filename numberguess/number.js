@@ -154,18 +154,18 @@ function getShowTime(){
       //for (let i = 0; i < Object.keys(cookiesObj).length; i++) {
       //  let thisCookieName = Object.keys(cookiesObj)[i];
 
-      if (Object.keys(cookiesObj).includes("number" + thisPlayersAtt.name)) {
-        let thisname = "number" + thisPlayersAtt.name;
+      if (Object.keys(cookiesObj).includes("Guess" + thisPlayersAtt.name)) {
+        let thisname = "Guess" + thisPlayersAtt.name;
         console.log(thisPlayersAtt.score)
         if (thisPlayersAtt.score > cookiesObj[thisname]) {
           console.log('Scoren er højere')
-          createCookie("number" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
+          createCookie("Guess" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
         } else {
           console.log('Scoren er lavere')
         }
 
       } else {
-        createCookie("number" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
+        createCookie("Guess" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
       }
     }
   }
