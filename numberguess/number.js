@@ -141,36 +141,3 @@ function getShowTime(){
   }
 
   submitGuess.addEventListener('click', checkGuess);
-
-
-
-  // Create cookie from the scores
-
-  if (i == scoreboard.length - 1 && playerTurn == 0) {
-    for (let i = 0; i < playersAtt.length; i++) {
-      let thisPlayersAtt = playersAtt[i];
-      console.log(thisPlayersAtt)
-      ///Check if user has higer score
-      //for (let i = 0; i < Object.keys(cookiesObj).length; i++) {
-      //  let thisCookieName = Object.keys(cookiesObj)[i];
-
-      if (Object.keys(cookiesObj).includes("Guess" + thisPlayersAtt.name)) {
-        let thisname = "Guess" + thisPlayersAtt.name;
-        console.log(thisPlayersAtt.score)
-        if (thisPlayersAtt.score > cookiesObj[thisname]) {
-          console.log('Scoren er højere')
-          createCookie("Guess" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
-        } else {
-          console.log('Scoren er lavere')
-        }
-
-      } else {
-        createCookie("Guess" + thisPlayersAtt.name, thisPlayersAtt.score, 2000)
-      }
-    }
-  }
-}
-//save cookie as OBJ
-cookiesObj = document.cookie;
-cookiesObj = cookieObj(cookiesObj)
-}
